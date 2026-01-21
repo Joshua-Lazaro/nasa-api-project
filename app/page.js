@@ -1,26 +1,41 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Apod from './components/Apod.js';
-import Image from "next/image";
+import Apod from './Apod/Apod.js';
+import LandingPage from './LandingPage/LandingPage.js';
 
-async function fetchAPOD() {
-  const API_KEY = "sWFq4D2q9N3UDDF6scWrOG6v6seOHzk2dVp3SrwJ";
-  const URL = "https://api.nasa.gov/planetary/apod?api_key=sWFq4D2q9N3UDDF6scWrOG6v6seOHzk2dVp3SrwJ";
+export default function Page() {
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    async function fetchAPOD(){
+      const URL = "https://api.nasa.gov/planetary/apod?api_key=sWFq4D2q9N3UDDF6scWrOG6v6seOHzk2dVp3SrwJ";
 
-  const response = await fetch(URL);
-  const data = await response.json();
-  console.log(data);
-  return data;
-}
+      const cached = localStorage.getItem('apodData');
+      if (cached) {
+        const parsed = JSON.parse(cached);
+        const today = new Date().toISOString().split('T')[0];
+        if (parsed.date === today) {
+          console.log('Using cached data');
+          setData(parsed);
+          return;
+        }
+      }
 
-export default async function Page() {
-  const data = await fetchAPOD();
+      // Fetch fresh data
+      const res = await fetch(URL);
+      const json = await res.json();
+      console.log(json);
 
-  return (
-    <main>
-      <h1>Welcome to My Nasa API WebApp</h1>
-      <Apod data={data} />
-    </main>
-  );
-}
+      localStorage.setItem('apodData', JSON.stringify(json));
+      setData(json);
+    }
+
+    fetchAPOD();
+    }, []);
+      return (
+      <main>
+        {/*<Apod data={data} />*/}
+        <LandingPage />
+      </main>
+      );
+  }
