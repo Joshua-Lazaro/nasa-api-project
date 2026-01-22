@@ -10,27 +10,21 @@ export default function Page() {
     async function fetchAPOD(){
       const URL = "https://api.nasa.gov/planetary/apod?api_key=sWFq4D2q9N3UDDF6scWrOG6v6seOHzk2dVp3SrwJ";
 
-      const cached = localStorage.getItem('apodData');
-      if (cached) {
-        const parsed = JSON.parse(cached);
-        const today = new Date().toISOString().split('T')[0];
-        if (parsed.date === today) {
-          console.log('Using cached data');
-          setData(parsed);
-          return;
-        }
+      const res = await fetch(URL, {
+        next: { revalidate: 86400 } //Revalidates once a day cache
+      });
+
+      if(!res.ok) {
+        throw new Error('Failed to fetch APOD data');
       }
 
-      // Fetch fresh data
-      const res = await fetch(URL);
       const json = await res.json();
       console.log(json);
 
-      localStorage.setItem('apodData', JSON.stringify(json));
       setData(json);
     }
 
-    fetchAPOD();
+    //fetchAPOD();
     }, []);
       return (
       <main>
