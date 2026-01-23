@@ -19,7 +19,7 @@ export default function Navbar() {
             <div className="space-x-4">
                 <Link href="/" className="hover:underline">Home</Link>
                 <Link href="/Apod" className="hover:underline">APOD</Link>
-                <Link href="/Apod" className="hover:underline">Asteroids</Link>
+                <Link href="/Neo" className="hover:underline">Asteroids</Link>
             </div>
         </div>
         

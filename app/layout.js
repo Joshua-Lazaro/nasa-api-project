@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ApodProvider } from "./Apod/ApodContext.js";
+import { NeoProvider } from "./Neo/NeoContext.js";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ApodProvider>
-        {children}
+          <NeoProvider>
+            {children}
+          </NeoProvider>
         </ApodProvider>
       </body>
     </html>

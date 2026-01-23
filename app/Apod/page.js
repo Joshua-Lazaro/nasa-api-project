@@ -1,7 +1,6 @@
 'use client';
 import { useContext } from "react";
 import NavBar from "../components/NavBar.js";
-import Image from "next/image";
 import Apod from "./Apod.js";
 import { ApodContext } from "./ApodContext.js";
 

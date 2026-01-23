@@ -3,11 +3,14 @@ import Image from "next/image";
 import SpaceExplorerFooter from "../components/Footer.js";
 import { useContext } from "react";
 import { ApodContext } from "../Apod/ApodContext.js";
-
+import { NeoContext } from "../Neo/NeoContext.js";
+import AsteroidCard from "../Neo/AsteroidCard.js";
 
 export default function LandingPage() {
     const data = useContext(ApodContext);
-    
+    const neoData = useContext(NeoContext);
+    const asteroids = neoData ? Object.values(neoData.near_earth_objects).flat() : [];
+
     if (!data) {
         return <p className="justify-center m-5">Loading...</p>;
     }
@@ -41,6 +44,11 @@ export default function LandingPage() {
                                 <p className="text-gray-200 mt-2 max-w-md drop-shadow-lg">
                                     Explore daily Astronomy Pictures of the Day (APOD) and Near Earth Asteroids data fetched from NASA's public APIs.
                                 </p>
+                                <a href="#featured-content">
+                                <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                                    Explore Now
+                                </button>
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -50,12 +58,12 @@ export default function LandingPage() {
                                 Welcome to Space Explore
                             </h1>
                             <br/>
-                            <p className="text-gray-400">This is a web application that fetches data from NASA's public APIs.</p>
                             <p className="text-gray-400">Explore beautiful Astronomy Pictures and Near Earth Asteroids data.</p>
+                            <p className="text-gray-400">This is a web application that fetches data from NASA's public APIs.</p>
                         </div>  
                     
-                    <h1 className="text-white text-4xl font-bold drop-shadow-lg mb-10"> Featured Content</h1>
-                    <div className="flex-row justify-center items-center mb-20 space-x-10">
+                    <h1 id="featured-content" className="text-white text-4xl font-bold drop-shadow-lg mb-10"> Featured Content</h1>
+                    <div className="flex-row justify-center items-center mb-20 space-x-10 flex flex-wrap">
                         <div className="w-96 h-90">
                             {data.url && (
                                 <div className="relative w-full min-h-[500px] mb-2 overflow-hidden rounded-lg shadow-lg">
@@ -71,7 +79,23 @@ export default function LandingPage() {
                                 
                             )}
                         </div>
-                          
+
+                        <div className="w-96 h-90">
+                            {data.url && (
+                                <div className="relative w-full min-h-[500px] mb-2 overflow-hidden rounded-lg shadow-lg">
+                                <img
+                                    src="/Asteroid_Bennu.jpeg"
+                                    alt="NASA Asteroid Bennu Picture"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                                <h2 className="text-lg font-bold text-white">Near Earth Objects</h2>
+                                </div>
+                                
+                            )}
+                        </div>
+
                     </div>
                 </div>
             </div>
