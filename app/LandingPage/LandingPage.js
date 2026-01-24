@@ -64,28 +64,6 @@ export default function LandingPage() {
                             <p className="text-white">Space Explore brings NASA’s public APIs to life, combining stunning visuals with scientific insights to help you 
                                 experience the beauty and dynamism of space.</p>
                         </div>  
-                    
-                    {/*
-                    <div className="relative w-full h-[500px] mb-10 rounded-lg overflow-hidden shadow-lg">
-                        <div className="bg-black opacity-75">
-                            <img
-                            src="/spiral-galaxy.png"
-                            alt="Space image of a spiral galaxy with bright core and blue arms."
-                            className="w-full h-full object-cover"
-                        />
-                        </div>
-                        <div className="absolute inset-1 flex flex-col items-center bg-opacity-50 px-10">
-                            <h2 className="text-3xl font-bold mb-6 text-white text-left">About Space Explore</h2>
-                            <p className="text-gray-200 leading-relaxed max-w-3xl text-left">
-                            Space Explore is an interactive web application powered by NASA’s public APIs. 
-                            It combines the Astronomy Picture of the Day (APOD), showcasing stunning views of the cosmos, 
-                            with Near‑Earth Object (NEO) data that tracks asteroids passing close to our planet. 
-                            By blending breathtaking imagery with real‑time scientific insights, Space Explore makes it easy 
-                            to discover the wonders of space and understand the dynamic environment around Earth.
-                            </p>
-                        </div>
-                    </div>
-                    */}
 
                     <div className="relative w-full h-[400px] sm:h-[500px] mb-20 rounded-lg overflow-hidden shadow-lg">
                         {/* Background image */}
@@ -107,8 +85,6 @@ export default function LandingPage() {
                             </p>
                         </div>
                     </div>
-
-
 
                     <h2 id="featured-content" className="text-white text-4xl font-bold drop-shadow-lg mb-10"> Featured Content</h2>
                     <div className="flex-row justify-center items-center mb-20 space-x-10 flex flex-wrap">
@@ -149,7 +125,6 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
-            <SpaceExplorerFooter />
         </main>
     );
 }
