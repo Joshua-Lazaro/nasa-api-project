@@ -20,20 +20,22 @@ export default function LandingPage() {
             <div className="flex flex-col min-h-screen">
                 <NavBar />
                 <div id="landing-page" className="flex-grow h-20 justify-items-center text-center p-10">
-                    <div className="relative w-full h-196 mb-10 rounded-lg overflow-hidden shadow-lg">
-                        <Image 
-                        className="p-4 rounded-lg shadow-md"
-                        src="/webb-tarantula-neb.png"
-                        alt="Space image with stars and swirls of colorful orange, red and white."
-                        fill
-                        style={{
-                            transform: "scale(1.1)",
-                            transformOrigin: "32% 38%",
-                            objectPosition: "32% 38%",
-                            objectFit: "cover",
-                        }}
-                        priority={true} 
-                        />
+                    <div className="relative w-full h-196 mb-50 rounded-lg overflow-hidden shadow-lg">
+                        <div className="bg-black opacity-50">
+                            <Image 
+                                className="p-4 rounded-lg shadow-md"
+                                src="/webb-tarantula-neb.png"
+                                alt="Space image with stars and swirls of colorful orange, red and white."
+                                fill
+                                style={{
+                                    transform: "scale(1.1)",
+                                    transformOrigin: "32% 38%",
+                                    objectPosition: "32% 38%",
+                                    objectFit: "cover",
+                                }}
+                                priority={true} 
+                            />
+                        </div>
 
                         <div className="absolute inset-0 flex items-center justify-start pl-10">
                             <div className="p-4 rounded flex flex-col items-start text-left">
@@ -45,7 +47,7 @@ export default function LandingPage() {
                                     Explore daily Astronomy Pictures of the Day (APOD) and Near Earth Asteroids data fetched from NASA's public APIs.
                                 </p>
                                 <a href="#featured-content">
-                                <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                                <button className="mt-4 px-6 py-2 text-white rounded border-2 border-blue-600 hover:bg-blue-600 transition scroll-smooth">
                                     Explore Now
                                 </button>
                             </a>
@@ -58,22 +60,69 @@ export default function LandingPage() {
                                 Welcome to Space Explore
                             </h1>
                             <br/>
-                            <p className="text-gray-400">Explore beautiful Astronomy Pictures and Near Earth Asteroids data.</p>
-                            <p className="text-gray-400">This is a web application that fetches data from NASA's public APIs.</p>
+                            <p className="text-white">Discover the universe through breathtaking Astronomy Pictures of the Day and real‑time Near‑Earth Object data.</p>
+                            <p className="text-white">Space Explore brings NASA’s public APIs to life, combining stunning visuals with scientific insights to help you 
+                                experience the beauty and dynamism of space.</p>
                         </div>  
                     
-                    <h1 id="featured-content" className="text-white text-4xl font-bold drop-shadow-lg mb-10"> Featured Content</h1>
+                    {/*
+                    <div className="relative w-full h-[500px] mb-10 rounded-lg overflow-hidden shadow-lg">
+                        <div className="bg-black opacity-75">
+                            <img
+                            src="/spiral-galaxy.png"
+                            alt="Space image of a spiral galaxy with bright core and blue arms."
+                            className="w-full h-full object-cover"
+                        />
+                        </div>
+                        <div className="absolute inset-1 flex flex-col items-center bg-opacity-50 px-10">
+                            <h2 className="text-3xl font-bold mb-6 text-white text-left">About Space Explore</h2>
+                            <p className="text-gray-200 leading-relaxed max-w-3xl text-left">
+                            Space Explore is an interactive web application powered by NASA’s public APIs. 
+                            It combines the Astronomy Picture of the Day (APOD), showcasing stunning views of the cosmos, 
+                            with Near‑Earth Object (NEO) data that tracks asteroids passing close to our planet. 
+                            By blending breathtaking imagery with real‑time scientific insights, Space Explore makes it easy 
+                            to discover the wonders of space and understand the dynamic environment around Earth.
+                            </p>
+                        </div>
+                    </div>
+                    */}
+
+                    <div className="relative w-full h-[400px] sm:h-[500px] mb-20 rounded-lg overflow-hidden shadow-lg">
+                        {/* Background image */}
+                        <div className="bg-black opacity-75">
+                            <img
+                            src="/spiral-galaxy.png"
+                            alt="Space image of a spiral galaxy with bright core and blue arms."
+                            className="absolute inset-0 w-full h-full object-cover object-[50%_20%]"
+                        />z
+                        </div>
+                        
+                        {/* Overlay text */}
+                        <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-10">
+                            <h2 className="text-2xl text-left sm:text-4xl font-bold text-white mb-4 ml-10 sm:ml-20">About Space Explore</h2>
+                            <p className="text-gray-200 max-w-3xl leading-relaxed text-left ml-20 sm:ml-20 text-sm sm:text-base">
+                            Space Explore is an interactive web application powered by NASA’s public APIs. It combines the Astronomy Picture of the Day (APOD), 
+                            showcasing stunning views of the cosmos, with Near‑Earth Object (NEO) data that tracks asteroids passing close to our planet. 
+                            By blending imagery with real‑time scientific insights, Space Explore makes it easy to discover the wonders of space and understand the dynamic environment around Earth.
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <h2 id="featured-content" className="text-white text-4xl font-bold drop-shadow-lg mb-10"> Featured Content</h2>
                     <div className="flex-row justify-center items-center mb-20 space-x-10 flex flex-wrap">
                         <div className="w-96 h-90">
                             {data.url && (
                                 <div className="relative w-full min-h-[500px] mb-2 overflow-hidden rounded-lg shadow-lg">
-                                <img
-                                    src={data.url}
-                                    alt={data.title || 'NASA Astronomy Picture of the Day'}
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
+                                    <a href="/Apod">
+                                        <img
+                                            src={data.url}
+                                            alt={data.title || 'NASA Astronomy Picture of the Day'}
+                                            className=" w-full h-full object-cover
+                                                        transition-transform duration-300 hover:scale-103 hover:shadow-xl hover:opacity-90"
+                                        />
+                                    </a>                               
                                 <h2 className="text-lg font-bold text-white">Astronomy Picture of the Day</h2>
                                 </div>
                                 
@@ -83,13 +132,14 @@ export default function LandingPage() {
                         <div className="w-96 h-90">
                             {data.url && (
                                 <div className="relative w-full min-h-[500px] mb-2 overflow-hidden rounded-lg shadow-lg">
-                                <img
-                                    src="/Asteroid_Bennu.jpeg"
-                                    alt="NASA Asteroid Bennu Picture"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                />
+                                    <a href="/Neo">
+                                        <img
+                                            src="/Asteroid_Bennu.jpeg"
+                                            alt="NASA Asteroid Bennu Picture"
+                                            className=" w-full h-full object-cover
+                                                        transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:opacity-90"
+                                        />
+                                    </a>
                                 <h2 className="text-lg font-bold text-white">Near Earth Objects</h2>
                                 </div>
                                 
@@ -99,6 +149,7 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
+            <SpaceExplorerFooter />
         </main>
     );
 }

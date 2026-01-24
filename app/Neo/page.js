@@ -32,7 +32,11 @@ export default function AsteroidsPage() {
 
       <section className="flex-grow p-10">
         <h1 className="text-4xl font-bold text-white mb-8">Near-Earth Asteroids</h1>
-
+        <p className='mb-5'> 
+            The Near‑Earth Object (NEO) data highlights asteroids that pass close to our planet, providing details such as their official designation and NASA database ID, estimated size ranges, brightness, and whether they are considered potentially hazardous; 
+            each entry also includes close‑approach information like the date and time of the flyby, the asteroid’s velocity, and how far it misses Earth expressed in kilometers, miles, lunar distances, or astronomical units, giving a snapshot of asteroid flybys that shows how 
+            fast they travel, how close they come, and whether they pose any risk, making the NEO section a concise way to explore the dynamic environment of near‑Earth space alongside the Astronomy Picture of the Day.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {asteroids.map((asteroid) => {
             // Guard against missing approach data
