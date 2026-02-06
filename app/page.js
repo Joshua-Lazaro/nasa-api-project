@@ -8,7 +8,6 @@ import ApodPage from './Apod/page.js';
 export default function Page() {
       return (
       <main>
-        {/*<Apod data={data} />*/}
         <LandingPage />
       </main>
       );   
